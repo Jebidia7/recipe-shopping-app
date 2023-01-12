@@ -1,0 +1,22 @@
+.recipe-book {
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+}
+
+.recipe-book h3 {
+  text-align: center;
+  color: white;
+}
+
+.recipe-book .recipe-book-header {
+  background: darkgrey;
+  border-radius: 10px 10px 0 0;
+}
+
+.recipe-book .recipe-book-content {
+  border: 2px darkgrey;
+  border-style: hidden dotted dotted dotted;
+  border-radius: 0 0 10px 10px;
+  flex-grow: 1;
+}

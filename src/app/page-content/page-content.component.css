@@ -1,0 +1,6 @@
+.page-content {
+  min-height: 200px;
+  border: solid 2px cornflowerblue;
+  border-radius: 10px;
+  padding: 5px;
+}
