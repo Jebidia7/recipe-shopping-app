@@ -7,6 +7,7 @@ import {Component} from '@angular/core';
 })
 export class ShoppingListComponent {
   items = [];
+  isEditing = false;
 
   constructor() {
     this.items = Array.from(Array(10).keys(), (value, i) => {
@@ -17,4 +18,7 @@ export class ShoppingListComponent {
     })
   }
 
+  onEditButtonClick() {
+      this.isEditing = !this.isEditing;
+  }
 }

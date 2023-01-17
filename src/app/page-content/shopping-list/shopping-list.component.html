@@ -1,12 +1,25 @@
 <div class="shopping-list">
-  <div class="col-md-12 shopping-list-header">
-    <h3>Shopping List</h3>
-  </div>
-  <div class="col-md-12 shopping-list-content">
-    <ul>
-      <li *ngFor="let item of items">
-        <app-shopping-list-item></app-shopping-list-item>
-      </li>
-    </ul>
-  </div>
+    <div class="col-md-12 shopping-list-header">
+        <h3>Shopping List</h3>
+    </div>
+    <div class="col-md-12 shopping-list-content">
+        <ul>
+            <li *ngFor="let item of items">
+                <app-shopping-list-item></app-shopping-list-item>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12 shopping-list-functions">
+        <button class="btn btn-primary col-md-12"
+                [ngClass]="{hidden: !isEditing}"
+            (click)="onEditButtonClick()">
+            Edit
+        </button>
+        <button class="btn btn-primary col-md-12"
+                [ngClass]="{hidden: isEditing}"
+                (click)="onEditButtonClick()">
+            Save
+        </button>
+
+    </div>
 </div>
