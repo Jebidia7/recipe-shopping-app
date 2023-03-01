@@ -8,6 +8,10 @@ import { ShoppingListComponent } from './page-content/shopping-list/shopping-lis
 import { RecipeBookComponent } from './page-content/recipe-book/recipe-book.component';
 import { ShoppingListItemComponent } from './page-content/shopping-list/shopping-list-item/shopping-list-item.component';
 import { RecipeListComponent } from './page-content/recipe-book/recipe-list/recipe-list.component';
+import {RouterLink} from "@angular/router";
+import { RecipeItemComponent } from './page-content/recipe-book/recipe-list/recipe-item/recipe-item.component';
+import { RecipeDetailsComponent } from './page-content/recipe-book/recipe-details/recipe-details.component';
+import { ShoppingListItemEditComponent } from './page-content/shopping-list/shopping-list-item-edit/shopping-list-item-edit.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +21,14 @@ import { RecipeListComponent } from './page-content/recipe-book/recipe-list/reci
     ShoppingListComponent,
     RecipeBookComponent,
     ShoppingListItemComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    RecipeItemComponent,
+    RecipeDetailsComponent,
+    ShoppingListItemEditComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterLink
   ],
   providers: [],
   bootstrap: [AppComponent]

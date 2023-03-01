@@ -1,24 +1,31 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Ingredient} from "../shared/ingredient.model";
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent {
-  items = [];
+export class ShoppingListComponent implements OnInit {
+  ingredients: Ingredient[] = [];
   isEditing = false;
 
   constructor() {
-    this.items = Array.from(Array(10).keys(), (value, i) => {
-      return {
-        name: `Some Item Name '${value}'`,
-        quantity: Math.random() * 10 + i
-      };
+
+  }
+
+  ngOnInit(): void {
+
+    this.ingredients = Array.from(Array(10).keys(), (value, i) => {
+      return new Ingredient(
+        `Some Item Name '${value}'`,
+        Math.round(Math.random() * 10 + i)
+      );
     })
   }
 
+
   onEditButtonClick() {
-      this.isEditing = !this.isEditing;
+    this.isEditing = !this.isEditing;
   }
 }

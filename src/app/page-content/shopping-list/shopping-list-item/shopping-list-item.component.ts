@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Ingredient} from "../../shared/ingredient.model";
 
 @Component({
   selector: 'app-shopping-list-item',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./shopping-list-item.component.css']
 })
 export class ShoppingListItemComponent {
-  name = "Name of Item";
-  quantity = 1;
   checked = false;
+
+  @Input() ingredient: Ingredient
 }
