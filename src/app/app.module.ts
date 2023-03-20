@@ -3,31 +3,33 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { PageContentComponent } from './page-content/page-content.component';
-import { ShoppingListComponent } from './page-content/shopping-list/shopping-list.component';
-import { RecipeBookComponent } from './page-content/recipe-book/recipe-book.component';
-import { ShoppingListItemComponent } from './page-content/shopping-list/shopping-list-item/shopping-list-item.component';
-import { RecipeListComponent } from './page-content/recipe-book/recipe-list/recipe-list.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { RecipeBookComponent } from './recipe-book/recipe-book.component';
+import { ShoppingListItemComponent } from './shopping-list/shopping-list-item/shopping-list-item.component';
+import { RecipeListComponent } from './recipe-book/recipe-list/recipe-list.component';
 import {RouterLink} from "@angular/router";
-import { RecipeItemComponent } from './page-content/recipe-book/recipe-list/recipe-item/recipe-item.component';
-import { RecipeDetailsComponent } from './page-content/recipe-book/recipe-details/recipe-details.component';
-import { ShoppingListItemEditComponent } from './page-content/shopping-list/shopping-list-item-edit/shopping-list-item-edit.component';
+import { RecipeItemComponent } from './recipe-book/recipe-list/recipe-item/recipe-item.component';
+import { RecipeDetailsComponent } from './recipe-book/recipe-details/recipe-details.component';
+import { ShoppingListItemEditComponent } from './shopping-list/shopping-list-item-edit/shopping-list-item-edit.component';
+import {FormsModule} from "@angular/forms";
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PageContentComponent,
     ShoppingListComponent,
     RecipeBookComponent,
     ShoppingListItemComponent,
     RecipeListComponent,
     RecipeItemComponent,
     RecipeDetailsComponent,
-    ShoppingListItemEditComponent
+    ShoppingListItemEditComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterLink
   ],
   providers: [],

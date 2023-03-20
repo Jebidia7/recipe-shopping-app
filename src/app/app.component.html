@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-header></app-header>
+      <app-header (selectedNavItem)="onNavItemSelected($event)"></app-header>
     </div>
   </div>
-  <div class="row">
+  <div class="row page-content">
     <div class="col-md-12">
-      <app-page-content></app-page-content>
+      <app-shopping-list *ngIf="selectedNavItem === 'shopping-list'"></app-shopping-list>
+      <app-recipe-book *ngIf="selectedNavItem === 'recipes'"></app-recipe-book>
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
     </div>
     <div class="col-md-12 shopping-list-content">
         <ul>
-            <li *ngFor="let ingredient of ingredients">
+            <li *ngFor="let ingredient of shoppingList">
                 <app-shopping-list-item [ingredient]="ingredient"></app-shopping-list-item>
             </li>
         </ul>

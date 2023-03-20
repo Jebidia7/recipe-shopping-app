@@ -20,3 +20,8 @@
   border-radius: 0 0 10px 10px;
   flex-grow: 1;
 }
+
+.recipe-book-content .recipe-book-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
