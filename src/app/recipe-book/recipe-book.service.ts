@@ -13,6 +13,7 @@ export class RecipeBookService implements OnInit {
 
   private recipes: Array<Recipe> = [
     new Recipe(
+      "1",
       "Pasta Salad",
       "Just a pasta salad",
       "https://thebrilliantkitchen.com/wp-content/uploads/2022/08/Rainbow-Pasta-Salad.jpg",
@@ -22,6 +23,7 @@ export class RecipeBookService implements OnInit {
         new Ingredient('Cherry Tomatoe', 12)
       ]),
     new Recipe(
+      "2",
       "Apple Pie",
       "Just a simple apple pie",
       "https://www.inspiredtaste.net/wp-content/uploads/2019/10/Homemade-Apple-Pie-Recipe-6-1200.jpg",
@@ -37,11 +39,22 @@ export class RecipeBookService implements OnInit {
   ngOnInit(): void {
   }
 
-  getRecipes() {
+  getRecipes(): Recipe[] {
     return this.recipes.slice();
   }
 
-  publishRecipeIngredients(ingredients: Ingredient[]) {
+  getRecipe(id: string): Recipe {
+    return {...this.recipes.find(recipe => recipe.id === id)};
+  }
+
+  deleteRecipe(id: string): boolean {
+    const deleted = {...this.recipes.find(recipe => recipe.id === id)};
+    this.recipes = [...this.recipes.filter(recipe => recipe.id !== id)];
+
+    return deleted?.id === id;
+  }
+
+  publishRecipeIngredients(ingredients: Ingredient[]): void {
     this.shoppingListService.addNewIngredients(ingredients);
   }
 }

@@ -6,7 +6,11 @@ import {RouterModule, Routes} from "@angular/router";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/recipes'},
-  {path: 'recipes', component: RecipeBookComponent},
+  {
+    path: 'recipes', component: RecipeBookComponent,
+    loadChildren: () => import('./recipe-book/recipe-book.module')
+      .then(m => m.RecipeBookModule)
+  },
   {path: 'shopping-list', component: ShoppingListComponent}
 ]
 

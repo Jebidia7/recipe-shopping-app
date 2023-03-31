@@ -1,3 +1,7 @@
 .recipe-item {
   margin-bottom: 5px;
 }
+
+.recipe-item > a {
+  cursor: pointer;
+}

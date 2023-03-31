@@ -8,10 +8,4 @@ import {Component} from '@angular/core';
 export class AppComponent {
   title = 'recipe-shopping-app';
 
-  selectedNavItem = 'recipes';
-
-  onNavItemSelected(navItemSelected: string) {
-
-    this.selectedNavItem = navItemSelected;
-  }
 }

@@ -2,24 +2,24 @@
   <div class="col-md-12 recipe-book-header">
     <h3>Recipe Book</h3>
   </div>
+
   <div class="col-md-12 recipe-book-content">
     <div class="row recipe-book-container">
       <div class="col-md-5">
+        <div class="row">
+          <div class="col-xs-12">
+            <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
+          </div>
+        </div>
+        <hr />
         <app-recipe-list></app-recipe-list>
       </div>
       <div class="col-md-6 col-md-offset-1">
-        <app-recipe-details *ngIf="selectedRecipe; else selectRecipeTemplate" [recipe]="selectedRecipe"></app-recipe-details>
-        <ng-template #selectRecipeTemplate>
-          <p>Select a recipe from the list.</p>
-        </ng-template>
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
-  <hr />
-  <div class="row">
-    <div class="col-xs-12">
-      <button class="btn btn-success">New Recipe</button>
-    </div>
-  </div>
+
+
 
 </div>
