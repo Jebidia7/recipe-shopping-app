@@ -6,8 +6,7 @@
   </div>
   <div class="row page-content">
     <div class="col-md-12">
-      <app-shopping-list *ngIf="selectedNavItem === 'shopping-list'"></app-shopping-list>
-      <app-recipe-book *ngIf="selectedNavItem === 'recipes'"></app-recipe-book>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
