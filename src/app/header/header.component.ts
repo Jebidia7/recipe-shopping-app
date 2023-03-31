@@ -8,11 +8,5 @@ import {Component, EventEmitter, Output} from '@angular/core';
 export class HeaderComponent {
   collapsed = true;
 
-  @Output() selectedNavItem = new EventEmitter<string>();
 
-
-  onSelect(navItemName: string) {
-
-    this.selectedNavItem.emit(navItemName);
-  }
 }
