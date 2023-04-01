@@ -15,6 +15,6 @@ export class RecipeItemComponent {
   }
 
   onSelected() {
-    this.recipeBookService.recipeSelected.emit(this.recipe);
+    this.recipeBookService.recipeSelected.next(this.recipe);
   }
 }

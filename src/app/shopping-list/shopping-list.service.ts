@@ -1,6 +1,6 @@
-import {EventEmitter, Injectable, OnInit} from '@angular/core';
-import {Ingredient} from "../shared/ingredient.model";
-import {RecipeBookService} from "../recipe-book/recipe-book.service";
+import { Injectable, OnInit } from '@angular/core';
+import { Ingredient } from "../shared/ingredient.model";
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class ShoppingListService implements OnInit {
     new Ingredient('Bananas', 5),
   ];
   private selectedIngredients: Ingredient[] = [];
-  shoppingList = new EventEmitter<Ingredient[]>();
-  selectedItems = new EventEmitter<Ingredient[]>();
+  shoppingList = new Subject<Ingredient[]>();
+  selectedItems = new Subject<Ingredient[]>();
 
   constructor() {
   }
@@ -34,41 +34,41 @@ export class ShoppingListService implements OnInit {
       this.ingredients.push(newIngredient);
     }
 
-    this.shoppingList.emit(this.ingredients.slice());
+    this.shoppingList.next(this.ingredients.slice());
   }
 
   addNewIngredients(newIngredients: Ingredient[]) {
     this.ingredients.push(...newIngredients);
-    this.shoppingList.emit(this.ingredients.slice());
+    this.shoppingList.next(this.ingredients.slice());
   }
 
   removeIngredient(name: string) {
     this.ingredients = this.ingredients.filter(ingredient => ingredient.name !== name);
-    this.shoppingList.emit(this.ingredients.slice());
+    this.shoppingList.next(this.ingredients.slice());
   }
 
   removeSelectedIngredients() {
     this.ingredients = this.ingredients.filter(ingredient => !this.selectedIngredients.includes(ingredient));
     this.selectedIngredients = [];
-    this.shoppingList.emit(this.ingredients.slice());
-    this.selectedItems.emit(this.selectedIngredients.slice());
+    this.shoppingList.next(this.ingredients.slice());
+    this.selectedItems.next(this.selectedIngredients.slice());
   }
 
   updateQuantity(name: string, newQuantity: number) {
     const ingredient = this.ingredients.find(ingredient => ingredient.name === name);
     if (ingredient) {
       ingredient.quantity = newQuantity
-      this.shoppingList.emit(this.ingredients.slice());
+      this.shoppingList.next(this.ingredients.slice());
     }
   }
 
   selectIngredient(selectedIngredient: Ingredient) {
     this.selectedIngredients.push(selectedIngredient);
-    this.selectedItems.emit(this.selectedIngredients.slice());
+    this.selectedItems.next(this.selectedIngredients.slice());
   }
 
   deselectIngredient(deselectedIngredient: Ingredient) {
     this.selectedIngredients = this.selectedIngredients.filter(ingredient => ingredient.name !== deselectedIngredient.name);
-    this.selectedItems.emit(this.selectedIngredients.slice());
+    this.selectedItems.next(this.selectedIngredients.slice());
   }
 }

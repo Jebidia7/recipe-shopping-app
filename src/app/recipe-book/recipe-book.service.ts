@@ -1,15 +1,15 @@
-import {EventEmitter, Injectable, OnInit} from '@angular/core';
-import {Recipe} from "./recipe.model";
-import {Ingredient} from "../shared/ingredient.model";
-import {ShoppingListService} from "../shopping-list/shopping-list.service";
+import { Injectable, OnInit } from '@angular/core';
+import { Recipe } from "./recipe.model";
+import { Ingredient } from "../shared/ingredient.model";
+import { ShoppingListService } from "../shopping-list/shopping-list.service";
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeBookService implements OnInit {
 
-  recipeSelected = new EventEmitter<Recipe>();
-  recipeIngredients = new EventEmitter<Ingredient[]>();
+  recipeSelected = new Subject<Recipe>();
 
   private recipes: Array<Recipe> = [
     new Recipe(
