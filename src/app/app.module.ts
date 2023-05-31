@@ -7,8 +7,7 @@ import {ShoppingListComponent} from './shopping-list/shopping-list.component';
 import {ShoppingListItemComponent} from './shopping-list/shopping-list-item/shopping-list-item.component';
 import {RouterLink} from "@angular/router";
 import {ShoppingListItemEditComponent} from './shopping-list/shopping-list-item-edit/shopping-list-item-edit.component';
-import {FormsModule} from "@angular/forms";
-import {DropdownDirective} from './shared/directives/dropdown.directive';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {AppRoutingModule} from './app-routing.module';
 import {RecipeBookModule} from "./recipe-book/recipe-book.module";
 import {DirectivesModule} from "./shared/directives/directives.module";
@@ -25,6 +24,7 @@ import {DirectivesModule} from "./shared/directives/directives.module";
     BrowserModule,
     DirectivesModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterLink,
     AppRoutingModule,
     RecipeBookModule

@@ -9,9 +9,10 @@ import { Subject } from "rxjs";
 })
 export class RecipeBookService implements OnInit {
 
-  recipeSelected = new Subject<Recipe>();
+  recipes: Subject<Recipe[]> = new Subject<Recipe[]>()
+  recipeSelected: Subject<Recipe> = new Subject<Recipe>();
 
-  private recipes: Array<Recipe> = [
+  private _recipes: Array<Recipe> = [
     new Recipe(
       "1",
       "Pasta Salad",
@@ -20,7 +21,7 @@ export class RecipeBookService implements OnInit {
       [
         new Ingredient('Pasta', 1),
         new Ingredient('Mayo', 1),
-        new Ingredient('Cherry Tomatoe', 12)
+        new Ingredient('Cherry Tomato', 12)
       ]),
     new Recipe(
       "2",
@@ -40,21 +41,34 @@ export class RecipeBookService implements OnInit {
   }
 
   getRecipes(): Recipe[] {
-    return this.recipes.slice();
+    return this._recipes.slice();
   }
 
   getRecipe(id: string): Recipe {
-    return {...this.recipes.find(recipe => recipe.id === id)};
+    return {...this._recipes.find(recipe => recipe.id === id)};
   }
 
   deleteRecipe(id: string): boolean {
-    const deleted = {...this.recipes.find(recipe => recipe.id === id)};
-    this.recipes = [...this.recipes.filter(recipe => recipe.id !== id)];
-
+    const deleted = {...this._recipes.find(recipe => recipe.id === id)};
+    this._recipes = [...this._recipes.filter(recipe => recipe.id !== id)];
+    this.recipes.next(this._recipes.slice());
     return deleted?.id === id;
   }
 
   publishRecipeIngredients(ingredients: Ingredient[]): void {
     this.shoppingListService.addNewIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe) {
+    this._recipes.push({...recipe, ...{id: (this._recipes.length + 1).toString()}});
+    this.recipes.next(this._recipes.slice());
+  }
+
+  updateRecipe(id: string, updatedRecipe: Recipe) {
+    const index = this._recipes.findIndex(recipe => recipe.id === id);
+    if(index >= 0) {
+      this._recipes[index] = updatedRecipe;
+      this.recipes.next(this._recipes.slice());
+    }
   }
 }
