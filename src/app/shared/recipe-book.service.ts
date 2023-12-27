@@ -1,8 +1,9 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Recipe } from "./recipe.model";
-import { Ingredient } from "../shared/ingredient.model";
+import { Recipe } from "../recipe-book/recipe.model";
+import { Ingredient } from "./ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
 import { Subject } from "rxjs";
+import { DataStorageService } from "./data-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,27 +13,27 @@ export class RecipeBookService implements OnInit {
   recipes: Subject<Recipe[]> = new Subject<Recipe[]>()
   recipeSelected: Subject<Recipe> = new Subject<Recipe>();
 
-  private _recipes: Array<Recipe> = [
-    new Recipe(
-      "1",
-      "Pasta Salad",
-      "Just a pasta salad",
-      "https://thebrilliantkitchen.com/wp-content/uploads/2022/08/Rainbow-Pasta-Salad.jpg",
-      [
-        new Ingredient('Pasta', 1),
-        new Ingredient('Mayo', 1),
-        new Ingredient('Cherry Tomato', 12)
-      ]),
-    new Recipe(
-      "2",
-      "Apple Pie",
-      "Just a simple apple pie",
-      "https://www.inspiredtaste.net/wp-content/uploads/2019/10/Homemade-Apple-Pie-Recipe-6-1200.jpg",
-      [
-        new Ingredient('Apples', 12),
-        new Ingredient('Pastry Crust', 2)
-      ])
-  ];
+  private _recipes: Array<Recipe> = [];
+  //   new Recipe(
+  //     "1",
+  //     "Pasta Salad",
+  //     "Just a pasta salad",
+  //     "https://thebrilliantkitchen.com/wp-content/uploads/2022/08/Rainbow-Pasta-Salad.jpg",
+  //     [
+  //       new Ingredient('Pasta', 1),
+  //       new Ingredient('Mayo', 1),
+  //       new Ingredient('Cherry Tomato', 12)
+  //     ]),
+  //   new Recipe(
+  //     "2",
+  //     "Apple Pie",
+  //     "Just a simple apple pie",
+  //     "https://www.inspiredtaste.net/wp-content/uploads/2019/10/Homemade-Apple-Pie-Recipe-6-1200.jpg",
+  //     [
+  //       new Ingredient('Apples', 12),
+  //       new Ingredient('Pastry Crust', 2)
+  //     ])
+  // ];
 
   constructor(private shoppingListService: ShoppingListService) {
   }
@@ -40,7 +41,13 @@ export class RecipeBookService implements OnInit {
   ngOnInit(): void {
   }
 
+  setRecipes(recipes: Recipe[]) {
+    this._recipes = recipes;
+    this.recipes.next(this._recipes.slice());
+  }
+
   getRecipes(): Recipe[] {
+    // this.dataStorageService.fetchRecipes()
     return this._recipes.slice();
   }
 

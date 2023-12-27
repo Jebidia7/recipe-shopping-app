@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeBookService } from "../recipe-book.service";
+import { RecipeBookService } from "../../shared/recipe-book.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Recipe } from "../recipe.model";
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
